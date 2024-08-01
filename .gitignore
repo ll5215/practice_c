@@ -56,3 +56,23 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Ignore all executables with no extension
+*.[oO]        # Ignore all object files
+*.out         # Ignore all .out files
+*.exe         # Ignore all .exe files
+*.out         # Ignore all .out files
+*.app         # Ignore all .app files
+*.i86         # Ignore all .i86 files
+*.x86_64      # Ignore all .x86_64 files
+*.hex         # Ignore all .hex files
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+출처: https://redcoder.tistory.com/264 [로재의 개발 일기:티스토리]
