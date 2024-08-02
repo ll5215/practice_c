@@ -94,16 +94,16 @@ void inOrderTraversal(BSTNode *root)
 	inOrderTraversalStack.top = NULL;
 	BSTNode *current = root;
 
-	while (current != NULL || !isEmpty(&inOrderTraversalStack))
+	while (current != NULL || !isEmpty(&inOrderTraversalStack))  // 스택이 비어있지 않은 동안
 	{
-		if (current != NULL)
+		if (current != NULL)  // 현재 노드가 비어있지 않다면
 		{
-			push(&inOrderTraversalStack, current);
-			current = current->left;
-		}else{
-			current = pop(&inOrderTraversalStack);
-			printf("%d ", current->item);
-			current = current->right;
+			push(&inOrderTraversalStack, current); // 현재 노드를 스택에 추가
+			current = current->left;  //현재 노드를 왼쪽 자식으로 이동
+		}else{    // 현재 노드가 비었다면
+			current = pop(&inOrderTraversalStack);   // 스택에서 노드를 꺼내 현재 노드로 설정
+			printf("%d ", current->item);  // 현재 노드의 값을 출력
+			current = current->right;  // 현재 노드를 오른쪽 자식으로 이동
 		}
 	}
 	

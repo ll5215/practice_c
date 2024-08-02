@@ -93,32 +93,39 @@ int main()
 
 void levelOrderTraversal(BSTNode* root)
 {
-	if (root == NULL) {
-        return;
+    if (root == NULL) {  // 트리가 비어 있는 경우
+        return;  // 아무 작업도 수행하지 않음
     }
 
-    Queue levelOrderQueue;
-	levelOrderQueue.head = NULL;
-	levelOrderQueue.tail = NULL;
+    Queue levelOrderQueue;  // 레벨 순서로 노드를 저장할 큐 초기화
+    levelOrderQueue.head = NULL;
+    levelOrderQueue.tail = NULL;
 
-	enqueue(&(levelOrderQueue.head),&(levelOrderQueue.tail), root);
+    // 큐에 루트 노드를 추가
+    enqueue(&(levelOrderQueue.head), &(levelOrderQueue.tail), root);
 
-	while (levelOrderQueue.head != NULL)
-	{
-		BSTNode *current;
-		current = dequeue(&(levelOrderQueue.head),&(levelOrderQueue.tail));
-		if (current->left != NULL)
-		{
-			enqueue(&(levelOrderQueue.head),&(levelOrderQueue.tail), current->left);
-		}
-		if (current->right != NULL)
-		{
-			enqueue(&(levelOrderQueue.head),&(levelOrderQueue.tail), current->right);
-		}
-		printf("%d ", current->item);
-	}
-	
+    // 큐가 비어있지 않은 동안 반복
+    while (levelOrderQueue.head != NULL)
+    {
+        BSTNode *current;
+        // 큐에서 노드를 디큐하여 현재 노드로 설정
+        current = dequeue(&(levelOrderQueue.head), &(levelOrderQueue.tail));
+        
+        // 현재 노드의 왼쪽 자식이 존재하는 경우 큐에 추가
+        if (current->left != NULL)
+        {
+            enqueue(&(levelOrderQueue.head), &(levelOrderQueue.tail), current->left);
+        }
+        // 현재 노드의 오른쪽 자식이 존재하는 경우 큐에 추가
+        if (current->right != NULL)
+        {
+            enqueue(&(levelOrderQueue.head), &(levelOrderQueue.tail), current->right);
+        }
+        // 현재 노드의 값을 출력
+        printf("%d ", current->item);
+    }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 

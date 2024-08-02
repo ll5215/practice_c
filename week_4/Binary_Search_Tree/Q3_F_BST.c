@@ -97,19 +97,19 @@ void preOrderIterative(BSTNode *root)
 	Stack preOrderIterativeStack;
 	preOrderIterativeStack.top = NULL;
 
-	push(&preOrderIterativeStack, root);
+	push(&preOrderIterativeStack, root); // 트리를 스택에 추가
 
-	while (!isEmpty(&preOrderIterativeStack))
+	while (!isEmpty(&preOrderIterativeStack))  // 스택이 비어있지 않은 동안
 	{
-		BSTNode *current = pop(&preOrderIterativeStack);
-		printf("%d ", current->item);
-		if (current->right != NULL)
+		BSTNode *current = pop(&preOrderIterativeStack);  // 스택에서 노드를 꺼내 현재 노드로 설정
+		printf("%d ", current->item);  // 현재 노드의 값을 출력
+		if (current->right != NULL)  // 현재 노드의 오른쪽 자식이 비어있지 않다면
 		{
-			push(&preOrderIterativeStack, current->right);
+			push(&preOrderIterativeStack, current->right);  // 스택에 오른쪽 자식노드를 추가
 		}
-		if (current->left != NULL)
+		if (current->left != NULL)  // 현재 노드의 왼쪽 자식이 비어있지 않다면
 		{
-			push(&preOrderIterativeStack, current->left);
+			push(&preOrderIterativeStack, current->left);  // 스택에 왼쪽 자식 노드를 추가
 		}
 	}
 	
